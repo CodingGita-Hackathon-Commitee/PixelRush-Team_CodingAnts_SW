@@ -1,0 +1,726 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root{
+  --bg:#f7f6f1;
+  --card:#ffffff;
+  --text:#151b19;
+  --muted:#777d79;
+  --line:#e7e5de;
+  --orange:#ed6736;
+  --orange-dark:#d95428;
+  --green:#3b8b78;
+  --green-dark:#287563;
+  --mint:#e4f3ee;
+  --peach:#fff0e7;
+  --pink:#fdecef;
+  --cream:#fdf7ef;
+  --shadow:0 5px 13px rgba(31,34,30,.13);
+  --phone-w:390px;
+  --phone-h:844px;
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:#ecebe7}
+body{
+  font-family:Inter,Arial,sans-serif;
+  color:var(--text);
+}
+.prototype{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:32px 16px;
+}
+.phone{
+  width:min(var(--phone-w), calc(100vw - 32px));
+  height:min(var(--phone-h), calc(100vh - 32px));
+  min-height:650px;
+  position:relative;
+  overflow:hidden;
+  background:var(--bg);
+  border:1px solid #deddd7;
+  border-radius:25px;
+  box-shadow:0 20px 55px rgba(0,0,0,.18);
+}
+.screen{
+  position:absolute;
+  inset:0;
+  display:none;
+  flex-direction:column;
+  overflow:hidden;
+  background:var(--bg);
+}
+.screen:target{display:flex}
+body:not(:has(.screen:target)) #home{display:flex}
+
+.status{
+  height:29px;
+  flex:none;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:7px 14px 0;
+  font-size:10px;
+  font-weight:700;
+}
+.status .right{display:flex;gap:5px;align-items:center}
+.signal{letter-spacing:-2px}
+.battery{width:17px;height:8px;border:1px solid currentColor;border-radius:2px;position:relative}
+.battery:after{content:"";position:absolute;right:-3px;top:2px;width:2px;height:4px;background:currentColor;border-radius:1px}
+.battery i{display:block;width:11px;height:5px;margin:1px;background:currentColor;border-radius:1px}
+
+.content{
+  flex:1;
+  min-height:0;
+  overflow-y:auto;
+  overflow-x:hidden;
+  padding:8px 17px 78px;
+}
+.scroll-content{
+  overflow:auto;
+  scrollbar-width:none;
+}
+.scroll-content::-webkit-scrollbar{display:none}
+.content{scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.content::-webkit-scrollbar{display:none}
+
+.header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:9px;
+}
+.brand{display:flex;align-items:center;gap:7px;font-size:14px;font-weight:800}
+.logo{
+  width:23px;height:23px;border-radius:50%;
+  background:#fff;border:1px solid #d7d6cf;
+  display:grid;place-items:center;font-size:12px;
+  box-shadow:0 1px 3px rgba(0,0,0,.07)
+}
+.avatar{
+  width:24px;height:24px;border-radius:50%;
+  display:grid;place-items:center;
+  color:var(--green);background:#e7f3ef;font-size:12px;font-weight:800;
+}
+.back{
+  width:27px;height:27px;border:0;border-radius:9px;background:#fff;
+  box-shadow:0 2px 7px rgba(0,0,0,.07);font-size:17px;
+  display:grid;place-items:center;color:#4c5550;text-decoration:none;
+}
+.kicker{
+  color:var(--orange);font-size:9px;letter-spacing:.45px;
+  text-transform:uppercase;font-weight:800;margin-top:3px;margin-bottom:3px;
+}
+h1{font-size:20px;line-height:1.1;margin:0 0 5px;font-weight:800;letter-spacing:-.45px}
+h2{font-size:15px;line-height:1.2;margin:0;font-weight:800}
+h3{font-size:12px;margin:0;font-weight:800}
+p{font-size:10px;line-height:1.4;color:var(--muted);margin:0}
+
+.location{
+  display:flex;align-items:center;gap:5px;
+  color:var(--orange);font-size:9px;font-weight:700;margin:4px 0 7px
+}
+.search{
+  height:37px;background:#fff;border:1px solid #dddcd6;border-radius:10px;
+  display:flex;align-items:center;gap:7px;padding:0 10px;color:#9a9e9a;
+  font-size:10px;margin:8px 0 10px;
+}
+.search span{flex:1}
+
+.section-title{display:flex;align-items:center;justify-content:space-between;margin:7px 0 7px}
+.section-title small{color:var(--orange);font-size:9px;font-weight:700}
+
+.card{
+  background:var(--card);border:1px solid #e9e7df;border-radius:12px;
+  box-shadow:var(--shadow);overflow:hidden;
+}
+.truck-card{padding:10px}
+.truck-row{display:flex;align-items:center;gap:8px}
+.food-thumb{
+  width:42px;height:42px;border-radius:9px;flex:none;object-fit:cover;
+}
+.food-thumb.lg{width:57px;height:57px}
+.food-photo{
+  height:74px;width:100%;object-fit:cover;display:block;
+}
+.info{flex:1;min-width:0}
+.name{font-size:11px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.meta{font-size:8px;color:var(--muted);margin-top:3px}
+.rating{font-size:8px;color:#555;margin-top:4px}
+.badge{
+  display:inline-flex;align-items:center;justify-content:center;
+  border-radius:999px;padding:4px 7px;font-size:8px;font-weight:700;
+  background:#e8f5ef;color:var(--green-dark)
+}
+.badge.orange{background:#fff0e8;color:var(--orange-dark)}
+.badge.pink{background:#fdecef;color:#c65c6b}
+
+.primary,.secondary{
+  display:flex;align-items:center;justify-content:center;gap:7px;
+  height:35px;border-radius:9px;text-decoration:none;font-size:9px;font-weight:800;
+  cursor:pointer;
+}
+.primary{background:var(--orange);color:#fff;box-shadow:0 4px 9px rgba(237,103,54,.24)}
+.secondary{background:#fff;color:var(--text);border:1px solid #dfddd5}
+.green-btn{background:var(--green);box-shadow:0 4px 9px rgba(59,139,120,.2)}
+.wide{width:100%}
+
+.mini-row{display:flex;gap:8px;margin-top:9px}
+.mini-truck{
+  flex:1;background:#fff;border:1px solid #e8e6df;border-radius:9px;
+  padding:7px;display:flex;align-items:center;gap:6px
+}
+.mini-dot{width:21px;height:21px;border-radius:50%;background:#f1e8dc;display:grid;place-items:center;font-size:9px}
+
+.bottom-nav{
+  position:absolute;bottom:0;left:0;right:0;height:65px;
+  background:rgba(255,255,255,.96);border-top:1px solid #eceae3;
+  display:flex;justify-content:space-around;align-items:center;padding:7px 22px 8px;
+}
+.nav-item{font-size:8px;color:#b1b4af;text-align:center;text-decoration:none;display:flex;flex-direction:column;gap:3px;align-items:center}
+.nav-item.active{color:var(--orange)}
+.nav-icon{font-size:13px;line-height:1}
+
+.map{
+  height:270px;border-radius:13px;background:
+  linear-gradient(105deg,transparent 0 27%,#dceff1 27% 46%,transparent 46%),
+  linear-gradient(14deg,transparent 0 52%,#fff 52% 58%,transparent 58%),
+  linear-gradient(164deg,transparent 0 66%,#e3e7db 66% 83%,transparent 83%),
+  #e8eadf;
+  border:1px solid #e1e0d8;position:relative;overflow:hidden;
+  box-shadow:var(--shadow);margin:7px 0 8px;
+}
+.map:before,.map:after{
+  content:"";position:absolute;background:#fff;border-radius:100px;
+  transform:rotate(-17deg);opacity:.9
+}
+.map:before{width:280px;height:5px;top:83px;left:-30px}
+.map:after{width:300px;height:5px;top:172px;left:-35px;transform:rotate(13deg)}
+.pin{
+  position:absolute;width:25px;height:25px;border-radius:50%;
+  background:var(--orange);border:4px solid #fff;box-shadow:0 3px 8px rgba(0,0,0,.2);
+}
+.pin.p1{top:74px;right:66px}.pin.p2{top:143px;right:24px}.pin.p3{top:194px;right:69px}
+.map-pill{
+  position:absolute;right:8px;top:8px;background:#fff;border-radius:999px;
+  padding:6px 9px;font-size:8px;font-weight:800;box-shadow:var(--shadow)
+}
+
+.tabs{display:flex;gap:6px;margin:7px 0 9px}
+.tab{padding:6px 11px;border-radius:999px;background:#fff;border:1px solid #e3e1da;font-size:8px;font-weight:700}
+.tab.active{background:#1d2824;color:#fff;border-color:#1d2824}
+
+.food-card{margin-bottom:9px}
+.food-card .details{padding:7px 9px 8px}
+.food-card .details .row{display:flex;align-items:center;justify-content:space-between}
+.price{font-size:10px;font-weight:800;margin-top:4px}
+.food-card .action{margin-top:6px;display:flex;justify-content:flex-end}
+.add{height:25px;border:0;border-radius:7px;background:var(--orange);color:#fff;font-size:8px;font-weight:800;padding:0 10px}
+.food-card .action .add:after{content:"  Add";}
+
+.alert{
+  border-radius:10px;padding:10px;margin:7px 0;
+  display:flex;gap:8px;align-items:flex-start;font-size:9px
+}
+.alert.success{background:#e7f5ef;color:var(--green-dark)}
+.alert.warn{background:#fff0ea;color:#b74e2c}
+.alert.pink{background:#fdecef;color:#a64b58}
+.alert .alert-icon{width:17px;height:17px;border-radius:50%;background:#fff;display:grid;place-items:center;flex:none;font-size:9px}
+
+.cart-item{
+  display:flex;align-items:center;gap:8px;padding:8px;background:#fff;border-radius:10px;
+  border:1px solid #e6e4dc;margin-bottom:7px
+}
+.qty{display:flex;align-items:center;gap:7px;margin-left:auto}
+.qty button{width:19px;height:19px;border:1px solid #d9d7d0;border-radius:50%;background:#fff;font-size:11px}
+.summary{background:#fff;border-radius:10px;padding:10px;margin-top:10px}
+.sum-row{display:flex;justify-content:space-between;font-size:9px;margin:5px 0;color:#646963}
+.sum-row.total{font-weight:800;color:var(--text);padding-top:5px;border-top:1px solid #eeeae2}
+
+.radio-option{
+  background:#fff;border:1px solid #e6e3dc;border-radius:8px;padding:8px;margin-bottom:7px;
+  display:flex;align-items:center;gap:8px;font-size:9px
+}
+.radio-option.selected{border:2px solid var(--green);background:#edf8f4}
+.radio{width:14px;height:14px;border:1px solid #c9c8c0;border-radius:50%;display:grid;place-items:center}
+.radio-option.selected .radio{background:var(--green);border-color:var(--green)}
+.radio-option.selected .radio:after{content:"✓";color:#fff;font-size:8px;font-weight:800}
+.option-copy{flex:1}.option-copy b{display:block;font-size:9px}.option-copy span{font-size:7px;color:var(--muted)}
+.option-tag{background:#17352f;color:#fff;border-radius:6px;padding:3px 5px;font-size:7px}
+
+.center-success{
+  flex:1;display:flex;align-items:center;justify-content:center;text-align:center;padding-bottom:50px
+}
+.check-circle{width:100px;height:100px;border-radius:50%;background:var(--green);display:grid;place-items:center;margin:0 auto 17px;box-shadow:0 7px 20px rgba(59,139,120,.2)}
+.check-circle span{width:49px;height:49px;border:4px solid #fff;border-radius:50%;display:grid;place-items:center;color:#fff;font-size:27px;font-weight:800}
+.success-title{font-size:12px;color:var(--green-dark);font-weight:900}
+
+.time-card{
+  background:var(--green);color:#fff;border-radius:12px;padding:12px;
+  display:flex;align-items:center;justify-content:space-between;box-shadow:var(--shadow);margin:8px 0 9px
+}
+.time-card .small{font-size:8px;text-transform:uppercase;opacity:.8}
+.time-card .time{font-size:18px;font-weight:800;margin-top:3px}
+.timer{background:var(--orange);border-radius:50%;width:39px;height:39px;display:grid;place-items:center;font-size:8px;font-weight:800}
+.steps{background:#fff;border-radius:10px;padding:9px}
+.step{display:flex;gap:8px;align-items:center;padding:5px 0;font-size:8px;color:#8c918c}
+.step .dot{width:16px;height:16px;border-radius:50%;border:1px solid #ddd;background:#fff;display:grid;place-items:center;font-size:8px}
+.step.done{color:var(--text)}.step.done .dot{background:var(--green);border-color:var(--green);color:#fff}.step.current{color:var(--orange)}.step.current .dot{background:var(--orange);border-color:var(--orange);color:#fff}
+
+.staff-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.staff-brand{font-size:13px;font-weight:800}.staff-role{font-size:8px;color:#777}
+.order-box{background:#fff;border-radius:10px;padding:9px;margin:8px 0;border:1px solid #e8e6df}
+.order-line{display:flex;align-items:center;gap:8px;margin-bottom:7px}
+.person-dot{width:25px;height:25px;border-radius:50%;background:#e7f5ef;color:var(--green);display:grid;place-items:center;font-weight:800;font-size:9px}
+.order-details{display:flex;justify-content:space-between;font-size:8px;line-height:1.5}
+.order-details strong{font-size:9px}.order-details .right{text-align:right}
+
+.empty-check{text-align:center;padding-top:80px}
+.empty-check .mini-check{width:44px;height:44px;border:1px solid #cfe8df;border-radius:50%;color:#8bc4b3;display:grid;place-items:center;margin:0 auto 12px;font-size:19px}
+.empty-check h2{font-size:14px}.empty-check p{margin-top:4px}
+
+.swap-card{display:flex;gap:9px;align-items:center;background:#fff;border-radius:10px;padding:8px;border:1px solid #e8e6df;margin:7px 0}
+.swap-card .food-thumb{width:56px;height:56px}.swap-copy{flex:1}
+.swap-card .name{font-size:9px}.swap-card .meta{font-size:7px}
+
+.collected{text-align:center;padding-top:37px}
+.collected .tick{width:40px;height:40px;border-radius:50%;background:#e7f5ef;color:#9ad1c2;display:grid;place-items:center;margin:0 auto 12px;font-size:18px}
+.rating-box{background:#fff0e8;border-radius:10px;padding:10px;margin-top:10px}
+.stars{font-size:18px;letter-spacing:3px;color:#f0a17e;margin-top:5px}
+
+.footer-space{height:10px}
+.home-indicator{
+  position:absolute;bottom:6px;left:50%;transform:translateX(-50%);
+  width:95px;height:4px;border-radius:999px;background:#d7d5cf;z-index:10;
+}
+
+/* keep buttons comfortably tappable */
+a.primary,a.secondary,.add,.back{user-select:none;-webkit-tap-highlight-color:transparent}
+
+
+/* ================= RESPONSIVE TABLET + LAPTOP ================= */
+@media (min-width: 600px) {
+  :root {
+    --app-w: 768px;
+    --app-h: 1024px;
+  }
+
+  .prototype {
+    padding: 28px;
+  }
+
+  .phone {
+    width: min(var(--app-w), calc(100vw - 56px));
+    height: min(var(--app-h), calc(100vh - 56px));
+    min-height: 0;
+    border-radius: 22px;
+  }
+
+  .content {
+    padding: 16px 28px 88px;
+  }
+
+  .status {
+    height: 34px;
+    padding: 9px 20px 0;
+    font-size: 11px;
+  }
+
+  .header {
+    margin-bottom: 14px;
+  }
+
+  .brand { font-size: 16px; }
+  .logo { width: 28px; height: 28px; }
+  .avatar { width: 29px; height: 29px; }
+  h1 { font-size: 28px; }
+  h2 { font-size: 18px; }
+  h3 { font-size: 14px; }
+  p { font-size: 12px; }
+  .kicker { font-size: 10px; }
+
+  .search {
+    height: 44px;
+    border-radius: 12px;
+    font-size: 12px;
+    padding: 0 13px;
+  }
+
+  .truck-card { padding: 14px; }
+  .food-thumb { width: 54px; height: 54px; }
+  .food-thumb.lg { width: 70px; height: 70px; }
+  .name { font-size: 13px; }
+  .meta, .rating { font-size: 10px; }
+  .badge { font-size: 9px; padding: 5px 9px; }
+  .primary, .secondary { height: 42px; font-size: 11px; border-radius: 10px; }
+
+  .mini-row { gap: 12px; }
+  .mini-truck { padding: 10px; }
+
+  .bottom-nav {
+    height: 74px;
+    padding: 8px 50px 10px;
+  }
+  .nav-item { font-size: 9px; }
+  .nav-icon { font-size: 16px; }
+
+  .map { height: 390px; }
+  .food-photo { height: 130px; }
+  .food-card .details { padding: 10px 12px 11px; }
+  .price { font-size: 12px; }
+  .add { height: 30px; font-size: 9px; }
+
+  .center-success { padding-bottom: 60px; }
+  .check-circle { width: 120px; height: 120px; }
+  .check-circle span { width: 58px; height: 58px; }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --app-w: 1280px;
+    --app-h: 900px;
+  }
+
+  .prototype {
+    padding: 30px;
+  }
+
+  .phone {
+    width: min(var(--app-w), calc(100vw - 60px));
+    height: min(var(--app-h), calc(100vh - 60px));
+    border-radius: 18px;
+  }
+
+  .content {
+    width: min(1120px, 100%);
+    margin: 0 auto;
+    padding: 22px 36px 94px;
+  }
+
+  .status {
+    width: min(1120px, 100%);
+    margin: 0 auto;
+    padding-left: 36px;
+    padding-right: 36px;
+  }
+
+  .header { margin-bottom: 18px; }
+  .brand { font-size: 18px; }
+  .logo { width: 31px; height: 31px; }
+  .avatar { width: 32px; height: 32px; }
+  h1 { font-size: 34px; }
+  h2 { font-size: 20px; }
+  h3 { font-size: 15px; }
+  p { font-size: 13px; }
+
+  .search { height: 48px; font-size: 13px; }
+  .map { height: 430px; }
+
+  /* Preserve the same card design while using the wider desktop canvas. */
+  .food-card {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    min-height: 150px;
+  }
+  .food-card .food-photo {
+    height: 100%;
+    min-height: 150px;
+  }
+  .food-card .details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 18px;
+  }
+
+  .mini-row { gap: 14px; }
+  .mini-truck { min-height: 64px; }
+
+  .cart-item { padding: 12px; }
+  .summary { padding: 14px; }
+  .sum-row { font-size: 11px; }
+
+  .bottom-nav {
+    height: 76px;
+    padding-left: max(80px, calc((100% - 900px) / 2));
+    padding-right: max(80px, calc((100% - 900px) / 2));
+  }
+}
+
+/* On narrow real phones, keep the original mobile proportions. */
+@media (max-width: 430px) {
+  .prototype { padding: 0; }
+  .phone {
+    width: 100vw;
+    height: 100vh;
+    min-height: 0;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+}
+
+
+/* ===== MOTION & POLISH LAYER ===== */
+
+/* ---- Tokens (defined here only) ---- */
+:root{
+  --ease:cubic-bezier(.2,.8,.2,1);
+  --ease-pop:cubic-bezier(.34,1.56,.64,1);
+  --dur-fast:160ms;
+  --dur-med:260ms;
+  --dur-slow:350ms;
+}
+
+/* ---- Focus: visible keyboard ring on every link and button (no motion) ---- */
+a:focus-visible,
+button:focus-visible{
+  outline:2px solid var(--green);
+  outline-offset:2px;
+  filter:drop-shadow(0 0 5px rgba(59,139,120,.45));
+}
+.primary:focus-visible,
+.add:focus-visible{outline-color:var(--orange-dark)}
+.nav-item:focus-visible{border-radius:8px}
+
+/* ---- Everything below only runs when the user hasn't asked for reduced motion ---- */
+@media (prefers-reduced-motion: no-preference){
+
+  /* == A. Transition bases (resting values are untouched) == */
+  .primary,.secondary,.add,.back{
+    transition:transform var(--dur-fast) var(--ease),
+               box-shadow var(--dur-fast) var(--ease),
+               filter var(--dur-fast) var(--ease);
+  }
+  .card,.truck-card,.food-card,.swap-card,.mini-truck,.cart-item,.order-box{
+    transition:transform var(--dur-med) var(--ease),
+               box-shadow var(--dur-med) var(--ease);
+  }
+  .card{isolation:isolate} /* keeps the rounded clip reliable while photos zoom; no visual change at rest */
+  .food-photo,.food-thumb{transition:transform var(--dur-med) var(--ease)}
+  .nav-icon{transition:transform var(--dur-med) var(--ease-pop)}
+  .tab,.radio-option{
+    transition:transform var(--dur-fast) var(--ease),
+               box-shadow var(--dur-fast) var(--ease),
+               filter var(--dur-fast) var(--ease);
+  }
+  .search{transition:box-shadow var(--dur-med) var(--ease)}
+  .qty button{transition:transform var(--dur-fast) var(--ease)}
+  .stars{
+    transition:transform var(--dur-med) var(--ease),
+               filter var(--dur-med) var(--ease);
+  }
+
+  /* == B. Screen change: fade + 8px rise, then staggered children == */
+  :is(.screen:target, body:not(:has(.screen:target)) #home){
+    animation:ttScreenIn var(--dur-slow) var(--ease) backwards;
+  }
+  :is(.screen:target, body:not(:has(.screen:target)) #home) .content > :not(.time-card){
+    animation:ttRise var(--dur-slow) var(--ease) var(--tt-delay,160ms) backwards;
+  }
+  :is(.screen:target, body:not(:has(.screen:target)) #home) .content > :nth-child(1){--tt-delay:0ms}
+  :is(.screen:target, body:not(:has(.screen:target)) #home) .content > :nth-child(2){--tt-delay:40ms}
+  :is(.screen:target, body:not(:has(.screen:target)) #home) .content > :nth-child(3){--tt-delay:80ms}
+  :is(.screen:target, body:not(:has(.screen:target)) #home) .content > :nth-child(4){--tt-delay:120ms}
+  :is(.screen:target, body:not(:has(.screen:target)) #home) .content > :nth-child(n+5){--tt-delay:160ms}
+
+  /* "Order placed" screen has no .content wrapper: stagger its text and button after the check pops */
+  .screen:target .center-success > div > :not(.check-circle){
+    animation:ttRise var(--dur-slow) var(--ease) var(--tt-delay,200ms) backwards;
+  }
+  .screen:target .center-success > div > :nth-child(2){--tt-delay:220ms}
+  .screen:target .center-success > div > :nth-child(3){--tt-delay:270ms}
+  .screen:target .center-success > div > :nth-child(4){--tt-delay:320ms}
+
+  /* == C. Search bar: soft orange focus ring (box-shadow only) == */
+  .search:focus-within{
+    box-shadow:0 0 0 3px rgba(237,103,54,.14), 0 4px 12px rgba(237,103,54,.10);
+  }
+
+  /* == D. Hover effects (pointer devices only) == */
+  @media (hover: hover){
+
+    /* Buttons: lift + glow in the button's own colour (original shadow stays as first layer) */
+    .primary:hover{
+      transform:translateY(-2px);
+      box-shadow:0 4px 9px rgba(237,103,54,.24), 0 6px 16px rgba(237,103,54,.34);
+    }
+    .green-btn:hover{
+      box-shadow:0 4px 9px rgba(59,139,120,.2), 0 6px 16px rgba(59,139,120,.32);
+    }
+    .secondary:hover{
+      transform:translateY(-1px);
+      box-shadow:0 4px 12px rgba(21,27,25,.12);
+    }
+    .add:hover{
+      transform:translateY(-1px);
+      box-shadow:0 4px 10px rgba(237,103,54,.35);
+    }
+    .back:hover{
+      transform:translateY(-1px);
+      box-shadow:0 2px 7px rgba(0,0,0,.07), 0 4px 12px rgba(21,27,25,.14);
+    }
+
+    /* Cards: 2px lift, slightly stronger shadow */
+    .card:hover,
+    .truck-card:hover,
+    .food-card:hover{
+      transform:translateY(-2px);
+      box-shadow:var(--shadow), 0 10px 22px rgba(31,34,30,.12);
+    }
+    .swap-card:hover,
+    .mini-truck:hover,
+    .cart-item:hover,
+    .order-box:hover{
+      transform:translateY(-2px);
+      box-shadow:0 6px 14px rgba(31,34,30,.10);
+    }
+
+    /* Photos: gentle zoom, clipped by the card's overflow:hidden */
+    .card:hover .food-photo,
+    .card:hover .food-thumb,
+    .swap-card:hover .food-thumb,
+    .cart-item:hover .food-thumb{
+      transform:scale(1.05);
+    }
+
+    /* Nav: icon hops up with a soft overshoot */
+    .nav-item:hover .nav-icon{transform:translateY(-3px)}
+
+    /* Tabs and radio options: small lift + tint */
+    .tab:hover{
+      transform:translateY(-1px);
+      box-shadow:0 3px 8px rgba(21,27,25,.10);
+      filter:brightness(.98);
+    }
+    .tab.active:hover{filter:brightness(1.15)}
+    .radio-option:hover{
+      transform:translateY(-1px);
+      box-shadow:0 3px 9px rgba(21,27,25,.09);
+      filter:brightness(.99);
+    }
+
+    /* Search bar: orange glow ring on hover */
+    .search:hover{
+      box-shadow:0 0 0 3px rgba(237,103,54,.14), 0 4px 12px rgba(237,103,54,.10);
+    }
+
+    /* Qty buttons */
+    .qty button:hover{transform:scale(1.1)}
+
+    /* Rating stars: small scale + warm glow */
+    .stars:hover{
+      transform:scale(1.04);
+      filter:drop-shadow(0 0 6px rgba(240,161,126,.65));
+    }
+  }
+
+  /* == E. Press states (placed after hover so they win; work on touch too) == */
+  .primary:active,
+  .secondary:active,
+  .add:active,
+  .back:active{transform:scale(.97)}
+  .qty button:active{transform:scale(.9)}
+
+  /* == F. Selected-state pop on screen entry (scale 1 → 1.04 → 1) == */
+  .tab.active{animation:ttPop 320ms var(--ease) 200ms backwards}
+  .radio-option.selected{animation:ttPopRow 320ms var(--ease) 200ms backwards}
+
+  /* == G. Ambient motion (slow and low intensity) == */
+
+  /* Map pins: pulsing ring, original drop shadow kept as the first layer */
+  .pin{animation:ttPinPulse 2.8s ease-out infinite}
+  .pin.p2{animation-delay:.9s}
+  .pin.p3{animation-delay:1.8s}
+
+  /* Green "Open" badges only (truck rows and swap cards; not Popular / orange / pink) */
+  .truck-row > .badge:not(.orange):not(.pink),
+  .swap-card > .badge:not(.orange):not(.pink){
+    animation:ttBreathe 3.2s ease-in-out infinite;
+  }
+
+  /* Active nav icon: gentle orange glow */
+  .nav-item.active .nav-icon{animation:ttNavGlow 3s ease-in-out infinite alternate}
+
+  /* Order-placed check: one-time pop-in, then slow ring pulse (original shadow kept) */
+  .check-circle{
+    animation:ttPopIn 600ms var(--ease-pop) 100ms backwards,
+              ttRing 3.6s ease-out 1s infinite;
+  }
+
+  /* Countdown timer: soft heartbeat */
+  .timer{animation:ttHeartbeat 2.6s ease-in-out infinite}
+
+  /* Current step dot: soft orange pulse */
+  .step.current .dot{animation:ttDotPulse 2s ease-out infinite}
+
+  /* Ready-time card: entry rise plus a very faint glow */
+  .time-card{
+    animation:ttRise var(--dur-slow) var(--ease) var(--tt-delay,160ms) backwards,
+              ttGlow 4.5s ease-in-out 900ms infinite alternate;
+  }
+
+  /* == H. Keyframes == */
+  @keyframes ttScreenIn{
+    from{opacity:0;transform:translateY(8px)}
+    to{opacity:1;transform:translateY(0)}
+  }
+  @keyframes ttRise{
+    from{opacity:0;transform:translateY(6px)}
+    to{opacity:1;transform:translateY(0)}
+  }
+  @keyframes ttPop{
+    0%{transform:scale(1)}
+    50%{transform:scale(1.04)}
+    100%{transform:scale(1)}
+  }
+  @keyframes ttPopRow{
+    0%{transform:scale(1)}
+    50%{transform:scale(1.02)}
+    100%{transform:scale(1)}
+  }
+  @keyframes ttPopIn{
+    from{opacity:0;transform:scale(.7)}
+    to{opacity:1;transform:scale(1)}
+  }
+  @keyframes ttPinPulse{
+    0%{box-shadow:0 3px 8px rgba(0,0,0,.2), 0 0 0 0 rgba(237,103,54,.38)}
+    70%,100%{box-shadow:0 3px 8px rgba(0,0,0,.2), 0 0 0 12px rgba(237,103,54,0)}
+  }
+  @keyframes ttBreathe{
+    0%,100%{box-shadow:0 0 0 0 rgba(59,139,120,0)}
+    50%{box-shadow:0 0 8px 1px rgba(59,139,120,.30)}
+  }
+  @keyframes ttNavGlow{
+    from{filter:drop-shadow(0 0 0 rgba(237,103,54,0))}
+    to{filter:drop-shadow(0 0 4px rgba(237,103,54,.55))}
+  }
+  @keyframes ttRing{
+    0%{box-shadow:0 7px 20px rgba(59,139,120,.2), 0 0 0 0 rgba(59,139,120,.28)}
+    70%,100%{box-shadow:0 7px 20px rgba(59,139,120,.2), 0 0 0 18px rgba(59,139,120,0)}
+  }
+  @keyframes ttHeartbeat{
+    0%{transform:scale(1);box-shadow:0 0 0 0 rgba(237,103,54,.35)}
+    14%{transform:scale(1.07)}
+    28%{transform:scale(1)}
+    42%{transform:scale(1.04)}
+    70%,100%{transform:scale(1);box-shadow:0 0 0 10px rgba(237,103,54,0)}
+  }
+  @keyframes ttDotPulse{
+    0%{box-shadow:0 0 0 0 rgba(237,103,54,.45)}
+    70%,100%{box-shadow:0 0 0 7px rgba(237,103,54,0)}
+  }
+  @keyframes ttGlow{
+    from{box-shadow:var(--shadow), 0 0 0 0 rgba(59,139,120,0);filter:brightness(1)}
+    to{box-shadow:var(--shadow), 0 6px 22px 0 rgba(59,139,120,.26);filter:brightness(1.035)}
+  }
+}
+
+/* ---- Reduced-motion fallback: no entry animations, no ambient loops, no transitions ---- */
+@media (prefers-reduced-motion: reduce){
+  *{
+    animation:none !important;
+    transition:none !important;
+  }
+}
